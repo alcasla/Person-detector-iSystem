@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#Data reading\nworkingDirectory = getwd()\ntrainBackgroung = paste(workingDirectory, \"/data/featuresBackgroundTra.csv\", sep=\"\")\ntrainPedestrians= paste(workingDirectory, \"/data/featuresPedestriansTra.csv\", sep=\"\")\ntestBackground  = paste(workingDirectory, \"/data/featuresBackgroundTst.csv\", sep=\"\")\ntestPedestrians = paste(workingDirectory, \"/data/featuresPedestriansTst.csv\", sep=\"\")\nrm(workingDirectory)\n\ntrainBackgroung = read.csv2(trainBackgroung, sep=\",\", header=FALSE);\n    colnames(trainBackgroung) =paste(\"ft\",1:dim(trainBackgroung)[2])\ntrainPedestrians = read.csv2(trainPedestrians, sep=\",\", header=F);\n    colnames(trainPedestrians) =paste(\"ft\",1:dim(trainPedestrians)[2])\ntestBackground = read.csv2(testBackground, sep=\",\", header=F);\n    colnames(testBackground) =paste(\"ft\",1:dim(testBackground)[2])\ntestPedestrians = read.csv2(testPedestrians, sep=\",\", header=F);\n    colnames(testPedestrians) =paste(\"ft\",1:dim(testPedestrians)[2])\n\n#Generate joint of training sets and attach class column\ntrain = rbind(trainBackgroung,trainPedestrians)\n    class = matrix(nrow=dim(train)[1], 0)\n    class[(dim(trainBackgroung)[1]+1):length(class)] = 1\n  train = cbind(train, class)\ntest = rbind(testBackground,testPedestrians)\n    class = matrix(nrow=dim(test)[1], 0)\n    class[(dim(testBackground)[1]+1):length(class)] = 1\n  test = cbind(test, class)\n\n#save data in files\nwrite.table(train, 'data/train.csv', sep=',', row.names=F)\nwrite.table(test, 'data/test.csv', sep=',', row.names=F)\n\n",
+    "created" : 1490955608585.000,
+    "dirty" : false,
+    "encoding" : "ISO8859-1",
+    "folds" : "",
+    "hash" : "2176257847",
+    "id" : "9C348C1",
+    "lastKnownWriteTime" : 1490959627,
+    "last_content_update" : 1490959627496,
+    "path" : "~/R/persons-detector-model/dataPreparation.R",
+    "project_path" : "dataPreparation.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

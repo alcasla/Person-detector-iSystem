@@ -1,0 +1,9 @@
+{
+    "path" : "~/R/persons-detector-model",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}
